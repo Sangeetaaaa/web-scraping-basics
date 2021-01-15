@@ -1,10 +1,25 @@
-const cheerio = require("cheerio");
-const axios = require("axios");
+const axios = require('axios');
+const fs = require('fs');
+const cheerio = require('cheerio');
 
-const url = "http://books.toscrape.com/catalogue/category/books/mystery_3/index.html";
 
-const response = axios.get(url);
 
-console.log(response.resolve);
 
-// let $ = cheerio.load(response.data)
+  axios.get('https://www.fundoodata.com/companies-in/mumbai-l5')
+  .then(function (response) {
+    const $ = cheerio.load(response.data);
+    const data = $('.search-result').text()
+    fs.writeFile('data.txt', data, (err) => {
+      console.log(err)
+    })
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+  
+  
+
+
+
+
