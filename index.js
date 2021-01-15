@@ -9,7 +9,8 @@ const cheerio = require('cheerio');
   .then(function (response) {
     const $ = cheerio.load(response.data);
     const data = $('.search-result').text()
-    fs.writeFile('data.txt', data, (err) => {
+    // const finalData = JSON.parse(data)
+    fs.writeFile('final.csv', data, (err) => {
       console.log(err)
     })
   })
